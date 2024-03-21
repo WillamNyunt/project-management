@@ -1,8 +1,15 @@
 import { createPortal } from 'react-dom';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 
 const AddProjectModal = forwardRef(({onProjectModalClose, OnProjectAddSubmit}, refs) => {
     const { titleRef, commentRef, dateRef } = refs;
+
+    useEffect(() => {
+        if (titleRef.current) {
+          titleRef.current.focus();
+        }
+      }, [titleRef]);
+    
     return (
         createPortal(
         <div className='absolute bg-stone-50 pt-5 h-full pr-44' style={{left: '400px', width: 'calc(100% - 400px)'}}>
