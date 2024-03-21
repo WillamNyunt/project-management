@@ -3,10 +3,22 @@
 @tailwind utilities;
 
 @layer base {
-    h1 {
-      @apply text-2xl;
-    }
-    h2 {
-      @apply text-xl;
-    }
+  h1 {
+    @apply text-2xl;
   }
+  h2 {
+    @apply text-xl;
+  }
+  button {
+    @apply p-4 rounded-lg;
+  }
+  input, textarea {
+    @apply bg-slate-200 text-gray-700;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gray-800 text-slate-100 hover:bg-gray-600;
+  }
+}
