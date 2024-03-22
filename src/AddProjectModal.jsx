@@ -1,4 +1,3 @@
-import { createPortal } from 'react-dom';
 import { forwardRef, useEffect } from 'react';
 import Modal from './Modal';
 
@@ -12,7 +11,6 @@ const AddProjectModal = forwardRef(({onProjectModalClose, OnProjectAddSubmit}, r
       }, [titleRef]);
     
     return (
-        createPortal(
         <Modal>
             <form className='flex flex-col pt-5' onSubmit={OnProjectAddSubmit}>
                 <div className='flex justify-end gap-x-5'>
@@ -26,8 +24,7 @@ const AddProjectModal = forwardRef(({onProjectModalClose, OnProjectAddSubmit}, r
                 <label htmlFor="date">Date</label>
                 <input ref={dateRef} type="date" name="date" />
             </form>
-        </Modal>,
-        document.getElementById('modal-root') )
+        </Modal>
     )
 })
 
