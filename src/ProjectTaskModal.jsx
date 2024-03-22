@@ -26,10 +26,10 @@ export default function ProjectTaskModal({ project, onProjectDelete, onTaskAdd, 
                 <p className='max-w-screen-md'>{project.comment}</p>
             </div>
             <hr />
-            <h2 className='pt-3 pb-3'>Tasks</h2>
+            <h2 className='pt-3 pb-3 font-bold text-xl'>Tasks</h2>
             <div className='flex flex-row justify-between'>
                 <input ref={taskRef} type='text' className='flex-grow items-center p-2' />
-                <button onClick={() => onTaskAdd(project, taskRef.current.value)}>Add task</button>
+                <button className='hover:text-green-800' onClick={() => onTaskAdd(project, taskRef.current.value)}>Add task</button>
             </div>
             <ul className='mt-5'>
                 {project.tasks.map(
