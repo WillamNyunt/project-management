@@ -28,6 +28,7 @@ function App() {
     <div className="flex flex-row min-h-screen">
       <Sidebar projects={projects} onProjectModalOpen={() => setModalOpen('add-project-modal')} />
       {modalOpen === 'add-project-modal' && <AddProjectModal onProjectModalClose={() => setModalOpen(false)} OnProjectAddSubmit={(e) => handleProjectAddSubmit(e)} ref={{titleRef, commentRef, dateRef}} />}
+      
       <MainContent onProjectModalOpen={() => setModalOpen('add-project-modal')} />
     </div>
   );
