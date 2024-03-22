@@ -49,7 +49,6 @@ function App() {
     const newProject = newProjects[newProjects.indexOf(project)]
     newProject.tasks.splice(taskIndex, 1)
     setProjects(newProjects)
-    
   }
 
   return (

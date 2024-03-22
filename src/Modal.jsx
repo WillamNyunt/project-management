@@ -1,10 +1,10 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
 
-export default function Modal({children}) {
+export default function Modal({children, className}) {
     return (
         createPortal(
-        <div className='absolute bg-stone-50 pt-5 h-full pr-44' style={{left: '400px', width: 'calc(100% - 400px)'}}>
+        <div className={`${className} absolute bg-stone-50 pt-5 h-full pr-44`} style={{left: '400px', width: 'calc(100% - 400px)'}}>
             {children}
         </div>,
         document.getElementById('modal-root'))

@@ -18,11 +18,11 @@ const AddProjectModal = forwardRef(({onProjectModalClose, OnProjectAddSubmit}, r
                     <button type='submit' className='btn-primary'>Save</button>
                 </div>
                 <label htmlFor="title">Title</label>
-                <input ref={titleRef} type="text" name="title" />
+                <input ref={titleRef} type="text" name="title" required />
                 <label htmlFor="description">Description</label>
-                <textarea ref={commentRef} type="text" name="description" rows='10'  />
+                <textarea ref={commentRef} type="text" name="description" rows='10' required  />
                 <label htmlFor="date">Date</label>
-                <input ref={dateRef} type="date" name="date" />
+                <input ref={dateRef} type="date" name="date" required/>
             </form>
         </Modal>
     )

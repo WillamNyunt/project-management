@@ -7,11 +7,11 @@ export default function Sidebar({projects, onProjectModalOpen,  onOpenProjectTas
                 Your Projects
             </h1>
             <button className='btn-primary' onClick={onProjectModalOpen}>Add projects</button>
-            <ul>
+            <ul className='flex flex-col gap-y-1'>
                 {projects.map((project, index) => {
                     return (
                         <li key={project.title}>
-                            <button className='btn-primary' onClick={() => onOpenProjectTaskModal(index)}>{project.title}</button>
+                            <button className='w-full p-2 bg-gray-900 text-slate-300 hover:bg-gray-800' onClick={() => onOpenProjectTaskModal(index)}>{project.title}</button>
                         </li> 
                     )
                 })}
