@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom';
 import { forwardRef, useEffect } from 'react';
+import Modal from './Modal';
 
 const AddProjectModal = forwardRef(({onProjectModalClose, OnProjectAddSubmit}, refs) => {
     const { titleRef, commentRef, dateRef } = refs;
@@ -12,7 +13,7 @@ const AddProjectModal = forwardRef(({onProjectModalClose, OnProjectAddSubmit}, r
     
     return (
         createPortal(
-        <div className='absolute bg-stone-50 pt-5 h-full pr-44' style={{left: '400px', width: 'calc(100% - 400px)'}}>
+        <Modal>
             <form className='flex flex-col pt-5' onSubmit={OnProjectAddSubmit}>
                 <div className='flex justify-end gap-x-5'>
                     <button onClick={onProjectModalClose}>Cancel</button>
@@ -25,7 +26,7 @@ const AddProjectModal = forwardRef(({onProjectModalClose, OnProjectAddSubmit}, r
                 <label htmlFor="date">Date</label>
                 <input ref={dateRef} type="date" name="date" />
             </form>
-        </div>,
+        </Modal>,
         document.getElementById('modal-root') )
     )
 })
