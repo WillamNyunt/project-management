@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Sidebar({projects, onProjectModalOpen}) {
+export default function Sidebar({projects, onProjectModalOpen,  onOpenProjectTaskModal}) {
     return (
         <aside className='flex flex-col gap-y-10 bg-gray-900 mt-5 p-4 rounded-r-lg' style={{width: '400px'}}>
             <h1 className='text-4xl font-bold text-slate-300 mt-5'>
@@ -8,11 +8,10 @@ export default function Sidebar({projects, onProjectModalOpen}) {
             </h1>
             <button className='btn-primary' onClick={onProjectModalOpen}>Add projects</button>
             <ul>
-                {projects.map(project => {
-                    console.log(project)
+                {projects.map((project, index) => {
                     return (
                         <li key={project.title}>
-                            <button className='btn-primary'>{project.title}</button>
+                            <button className='btn-primary' onClick={() => onOpenProjectTaskModal(index)}>{project.title}</button>
                         </li> 
                     )
                 })}
