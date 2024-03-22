@@ -1,1 +1,2 @@
 - In this project I will be using refs to grab user input date. Althrough we would prefer to use controlled component to handle form inputs this is done for practice.
+- I will only be focusing on 'create' and 'delete' functionality on project management.

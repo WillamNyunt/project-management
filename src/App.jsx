@@ -27,6 +27,7 @@ function App() {
     if (index > -1) {
       previousProjects.splice(index, 1)
       setProjects(previousProjects)
+      setModalOpen({type: false, data: []})
     } else {
       return
     }
@@ -36,11 +37,26 @@ function App() {
     setModalOpen({type: 'project-task-modal', data: projects[index]})
   }
 
+  function handleTaskAdd(project, task){
+    let previousProjects = [...projects]
+    const index = previousProjects.indexOf(project)
+    previousProjects[index].tasks.push(task)
+    setProjects(previousProjects)
+  }
+
+  function handleTaskDelete(project, task, taskIndex){
+    let newProjects = [...projects]
+    const newProject = newProjects[newProjects.indexOf(project)]
+    newProject.tasks.splice(taskIndex, 1)
+    setProjects(newProjects)
+    
+  }
+
   return (
     <div className="flex flex-row min-h-screen">
-      <Sidebar projects={projects} onProjectModalOpen={() => setModalOpen({type: 'add-project-modal', data: null})} onOpenProjectTaskModal={(index) => handleOpenProjectTaskModal(index)} />
+      <Sidebar projects={projects} onProjectModalOpen={() => setModalOpen({type: 'add-project-modal', data: null})} onOpenProjectTaskModal={handleOpenProjectTaskModal} />
       {modalOpen.type === 'add-project-modal' && <AddProjectModal onProjectModalClose={() => setModalOpen({type: false, data: []})} OnProjectAddSubmit={(e) => handleProjectAddSubmit(e)} ref={{titleRef, commentRef, dateRef}} />}
-      {modalOpen.type === 'project-task-modal' && <ProjectTaskModal project={modalOpen.data} onProjectDelete={(project) => handleProjectDelete(project)} />}
+      {modalOpen.type === 'project-task-modal' && <ProjectTaskModal project={modalOpen.data} onProjectDelete={(project) => handleProjectDelete(project)} onTaskAdd={handleTaskAdd} onTaskDelete={handleTaskDelete} />}
       <MainContent onProjectModalOpen={() => setModalOpen({type: 'add-project-modal', data: null})} />
     </div>
   );
