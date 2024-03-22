@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 
 function App() {
   let [projectModalOpen, setProjectModalOpen] = useState(false)
+  let [projects, setProjects] = useState([])
   
   const titleRef = useRef(null);
   const commentRef = useRef(null);
@@ -19,12 +20,13 @@ function App() {
     const title = titleRef.current.value;
     const comment = commentRef.current.value;
     const date = dateRef.current.value;
-    console.log(title)
+    setProjects(project => [...project, {title: title, comment: comment, date: date, tasks: []}])
+    setProjectModalOpen(false)
   }
 
   return (
     <div className="flex flex-row min-h-screen">
-      <Sidebar onProjectModalOpen={() => setProjectModal(true)} />
+      <Sidebar projects={projects} onProjectModalOpen={() => setProjectModal(true)} />
       {projectModalOpen && <AddProjectModal onProjectModalClose={() => setProjectModal(false)} OnProjectAddSubmit={(e) => handleProjectAddSubmit(e)} ref={{titleRef, commentRef, dateRef}} />}
       <MainContent onProjectModalOpen={() => setProjectModal(true)} />
     </div>
