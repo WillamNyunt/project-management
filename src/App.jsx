@@ -4,7 +4,7 @@ import AddProjectModal from "./AddProjectModal";
 import { useState, useRef } from "react";
 
 function App() {
-  let [projectModalOpen, setProjectModalOpen] = useState(false)
+  let [modalOpen, setModalOpen] = useState(false)
   let [projects, setProjects] = useState([])
   
   const titleRef = useRef(null);
@@ -12,7 +12,7 @@ function App() {
   const dateRef = useRef(null);
 
   function setProjectModal(value) {
-    setProjectModalOpen(value)
+    setModalOpen(value)
   }
 
   function handleProjectAddSubmit(e){
@@ -26,9 +26,9 @@ function App() {
 
   return (
     <div className="flex flex-row min-h-screen">
-      <Sidebar projects={projects} onProjectModalOpen={() => setProjectModal(true)} />
-      {projectModalOpen && <AddProjectModal onProjectModalClose={() => setProjectModal(false)} OnProjectAddSubmit={(e) => handleProjectAddSubmit(e)} ref={{titleRef, commentRef, dateRef}} />}
-      <MainContent onProjectModalOpen={() => setProjectModal(true)} />
+      <Sidebar projects={projects} onProjectModalOpen={() => setModalOpen('project-modal')} />
+      {modalOpen === 'project-modal' && <AddProjectModal onProjectModalClose={() => setModalOpen(false)} OnProjectAddSubmit={(e) => handleProjectAddSubmit(e)} ref={{titleRef, commentRef, dateRef}} />}
+      <MainContent onProjectModalOpen={() => setModalOpen('project-modal')} />
     </div>
   );
 }
